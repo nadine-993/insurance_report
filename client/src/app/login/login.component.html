@@ -1,0 +1,21 @@
+<form class="login-form" #loginForm="ngForm" (ngSubmit)="login()">
+    <input
+      name="username"
+      [(ngModel)]="model.username"
+      class="form-control"
+      placeholder="Username"
+      required
+    />
+  
+    <input
+      name="password"
+      [(ngModel)]="model.password"
+      class="form-control"
+      placeholder="Password"
+      type="password"
+      required
+    />
+  
+    <button class="btn btn-outline-success" type="submit">Log In</button>
+  </form>
+  
