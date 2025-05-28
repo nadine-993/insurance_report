@@ -11,11 +11,10 @@ import { InsuranceReport } from '../_models/insurance-report';
 import { InsuranceReportComponent } from "../insurance-report/insurance-report.component";
 
 @Component({
-  selector: 'app-dashboard',
-  standalone: true,
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, FormsModule, InsuranceReportComponent],
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+    selector: 'app-dashboard',
+    imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, FormsModule, InsuranceReportComponent],
+    templateUrl: './dashboard.component.html',
+    styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit {
 

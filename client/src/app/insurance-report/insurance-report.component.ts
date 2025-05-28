@@ -6,11 +6,10 @@ import { FormsModule } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-insurance-report',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './insurance-report.component.html',
-  styleUrls: ['./insurance-report.component.css'] // ✅
+    selector: 'app-insurance-report',
+    imports: [FormsModule],
+    templateUrl: './insurance-report.component.html',
+    styleUrls: ['./insurance-report.component.css'] // ✅
 })
 export class InsuranceReportComponent {
     http= inject (HttpClient);
