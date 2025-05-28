@@ -1,0 +1,63 @@
+<div class="contatiner mt-5">
+    <h2 class="mb-4">Submit Insurance Report</h2>
+
+    <form (ngSubmit)="submitReports()" #reportFrom="ngForm" class="form-container">
+
+<div class="mb-3">
+    <label>Scheme Name</label>
+    <input class="form-control" name="SchemeName" [(ngModel)]="model.schemeName" required>
+</div>
+
+<div class="mb-3">
+    <label>Policy Name</label>
+    <input class="form-control" name="PolicyName" [(ngModel)]="model.policyName" required>
+</div>
+<div class="row">
+    <div class="col-md-6 mb-3">
+      <label>Policy Start Date</label>
+      <input type="date" class="form-control" name="policyStartDate" [(ngModel)]="model.policyStartDate" required />
+    </div>
+    <div class="col-md-6 mb-3">
+      <label>Policy End Date</label>
+      <input type="date" class="form-control" name="policyEndDate" [(ngModel)]="model.policyEndDate" required />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label>Initial Effective Date</label>
+      <input type="date" class="form-control" name="initialEffectiveDate" [(ngModel)]="model.initialEffectiveDate" required />
+    </div>
+    <div class="col-md-6 mb-3">
+      <label>Report Date</label>
+      <input type="date" class="form-control" name="reportDate" [(ngModel)]="model.reportDate" required />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label>Report Start Date</label>
+      <input type="date" class="form-control" name="reportStartDate" [(ngModel)]="model.reportStartDate" required />
+    </div>
+    <div class="col-md-6 mb-3">
+      <label>Report End Date</label>
+      <input type="date" class="form-control" name="reportEndDate" [(ngModel)]="model.reportEndDate" required />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <label>Claims Processed</label>
+      <input type="number" class="form-control" name="claimsProcessed" [(ngModel)]="model.claimsProcessed" required />
+    </div>
+    <div class="col-md-4 mb-3">
+      <label>Claims Not Processed</label>
+      <input type="number" class="form-control" name="claimsNotProcessed" [(ngModel)]="model.claimsNotProcessed" required />
+    </div>
+    <div class="col-md-4 mb-3">
+      <label>Claims Not Reported</label>
+      <input type="number" class="form-control" name="claimsNotReported" [(ngModel)]="model.claimsNotReported" required />
+    </div>
+  </div>
+
+  <button class="btn btn-primary mt-3" type="submit">Submit Report</button>
+</form>
+</div>

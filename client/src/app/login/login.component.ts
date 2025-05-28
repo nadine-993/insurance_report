@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { AccountService } from '../_services/account.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,13 +22,16 @@ export class LoginComponent implements OnInit {
     this.getUsers()
   }
   accountService = inject(AccountService);
+  private router= inject (Router);
+
   model: any= {};
   login(){
     this.accountService.login(this.model).subscribe({
-      next: response =>  {
-        console.log(this.model);
 
-        console.log(response);
+      next: response =>  {
+        console.log('Login success:', response);
+        this.router.navigateByUrl('/dashboard')
+        
       },
       error: error => console.log(error)
     })
