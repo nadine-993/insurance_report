@@ -7,7 +7,7 @@ import { map } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
-})
+}) 
 export class AccountService{
     private http= inject (HttpClient);
     baseUrl= 'http://localhost:5091/api/';
