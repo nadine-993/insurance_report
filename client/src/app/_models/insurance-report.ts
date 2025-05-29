@@ -10,4 +10,6 @@ export interface InsuranceReport{
   claimsProcessed: number;
   claimsNotProcessed: number;
   claimsNotReported: number;
+  submittedBy: string; // ✅ Add this
+
 }

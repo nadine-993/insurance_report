@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers;
-
 public class InsuranceReportController : BaseApiController
 {
     private readonly DataContext _context;
@@ -17,8 +16,26 @@ public class InsuranceReportController : BaseApiController
 
     // POST: api/insurancereport
     [HttpPost]
-    public async Task<ActionResult<InsuranceReport>> CreateReport(InsuranceReport report)
+    public async Task<ActionResult<InsuranceReport>> CreateReport(InsuranceReportDto dto)
     {
+
+
+        var report = new InsuranceReport
+        {
+            SchemeName = dto.SchemeName,
+            PolicyName = dto.PolicyName,
+            ReportDate = dto.ReportDate,
+            PolicyStartDate = dto.PolicyStartDate,
+            PolicyEndDate = dto.PolicyEndDate,
+            InitialEffectiveDate = dto.InitialEffectiveDate,
+            ReportStartDate = dto.ReportStartDate,
+            ReportEndDate = dto.ReportEndDate,
+            ClaimsProcessed = dto.ClaimsProcessed,
+            ClaimsNotProcessed = dto.ClaimsNotProcessed,
+            ClaimsNotReported = dto.ClaimsNotReported,
+            SubmittedBy = dto.SubmittedBy,
+        };
+
         _context.InsuranceReports.Add(report);
         await _context.SaveChangesAsync();
         return Ok(report);
@@ -28,7 +45,12 @@ public class InsuranceReportController : BaseApiController
     [HttpGet]
     public async Task<ActionResult<IEnumerable<InsuranceReport>>> GetReports()
     {
-        return await _context.InsuranceReports.ToListAsync();
+        var username = User.Identity?.Name;
+        var userReports = await _context.InsuranceReports
+            .Where(r => r.SubmittedBy == username)
+            .ToListAsync();
+
+        return userReports;
     }
 
     // GET: api/insurancereport/5
@@ -40,4 +62,21 @@ public class InsuranceReportController : BaseApiController
 
         return report;
     }
+
+[HttpDelete("{id}")]
+[Authorize]
+public async Task<IActionResult> DeleteReport(int id)
+{
+    var report = await _context.InsuranceReports.FindAsync(id);
+    if (report == null) return NotFound();
+
+    if (report.SubmittedBy != User.Identity?.Name)
+        return Forbid(); // ✅ prevent other users from deleting each other's reports
+
+    _context.InsuranceReports.Remove(report);
+    await _context.SaveChangesAsync();
+
+    return NoContent();
+}
+
 }

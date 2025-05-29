@@ -7,7 +7,7 @@ public class InsuranceReport
 {
     [Key]
     public int ReportId { get; set; }
-    public  required string SchemeName { get; set; }
+    public required string SchemeName { get; set; }
     public required string PolicyName { get; set; }
     public DateTime PolicyStartDate { get; set; }
     public DateTime PolicyEndDate { get; set; }
@@ -15,9 +15,11 @@ public class InsuranceReport
     public DateTime ReportStartDate { get; set; }
     public DateTime ReportEndDate { get; set; }
     public DateTime ReportDate { get; set; }
-    public decimal CalimsProcessed { get; set; }
+    public decimal ClaimsProcessed { get; set; }
     public decimal ClaimsNotProcessed { get; set; }
-    public decimal ClaimsNotReported { get; set; }    
+    public decimal ClaimsNotReported { get; set; }  
+    public  string SubmittedBy { get; set; }  // or public AppUser User { get; set; }
+  
 
 
     }
